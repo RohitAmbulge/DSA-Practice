@@ -4,31 +4,70 @@ public class FirstAndLastPosition {
 
     public static int[] searchRange(int[] nums, int target) {
 
-        Map<Integer, Integer> map = new HashMap<>();
-        int firstPosition = -1;
-        int lastPosition = -1;
+        int first = firstPosition(nums, target);
+        int last = lastPosition(nums, target);
 
-        for (int i = 0; i < nums.length; i++) {
+        return new int[] { first, last };
 
-            if (nums[i] == target) {
-                if (firstPosition == -1) {
-                    firstPosition = i;
+    }
+
+    public static int firstPosition(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        int first = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                if (mid == 0 || nums[mid - 1] != target) {
+                    first = mid;
+                    break;
+                } else {
+                    right = mid - 1;
                 }
-
-                lastPosition = i;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
-
         }
 
-        return new int[] { firstPosition, lastPosition };
+        return first;
+    }
+
+    public static int lastPosition(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        int last = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                if (mid == nums.length - 1 || nums[mid + 1] != target) {
+                    last = mid;
+                    break;
+                } else {
+                    left = mid + 1;
+                }
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return last;
+
     }
 
     public static void main(String[] args) {
-        // int[] nums = { 5, 7, 7, 8, 8, 10 };
-        // int target = 8;
-
         int[] nums = { 5, 7, 7, 8, 8, 10 };
-        int target = 6;
+        int target = 8;
+
+        // int[] nums = { 5, 7, 7, 8, 8, 10 };
+        // int target = 6;
 
         System.out.println(Arrays.toString(searchRange(nums, target)));
     }
