@@ -4,30 +4,22 @@ public class RearrangeArrayElementsBySign {
 
     public static int[] rearrangeArray(int[] nums) {
 
-        int left = 0;
-        int right = nums.length - 1;
-        int index = 0;
-        int[] temp = new int[nums.length];
+        int[] result = new int[nums.length];
 
-        while (left <= right) {
-            if (nums[index] > 0) {
-                temp[left++] = nums[index++];
-            } else {
-                temp[right--] = nums[index++];
-            }
-        }
+        int posIndex = 0;
+        int negIndex = 1;
 
-        left = 0;
-        right = nums.length - 1;
         for (int i = 0; i < nums.length; i++) {
-            if (i % 2 == 0) {
-                nums[i] = temp[left++];
+            if (nums[i] > 0) {
+                result[posIndex] = nums[i];
+                posIndex += 2;
             } else {
-                nums[i] = temp[right--];
+                result[negIndex] = nums[i];
+                negIndex += 2;
             }
         }
 
-        return nums;
+        return result;
 
     }
 
