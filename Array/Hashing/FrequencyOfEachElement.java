@@ -1,3 +1,5 @@
+import java.util.Map;
+import java.util.HashMap;
 
 public class FrequencyOfEachElement {
 
@@ -21,10 +23,14 @@ public class FrequencyOfEachElement {
         }
     }
 
+    public static void frequencyOfElements2(int[] nums){
+        Map<Integer, Integer> map = new HashMap<>();
+    }
+
     public static void main(String[] args) {
         // int arr[] = { 10, 5, 10, 15, 10, 5 };
         int arr[] = { 2, 2, 3, 4, 4, 2 };
-        frequencyOfElements(arr);
+        // frequencyOfElements(arr);
 
     }
 }
