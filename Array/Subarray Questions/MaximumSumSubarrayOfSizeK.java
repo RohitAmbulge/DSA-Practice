@@ -54,13 +54,32 @@ public class MaximumSumSubarrayOfSizeK {
 
     }
 
+    public static int maximumSumSubarray3(int[] arr, int k) {
+        int i = 0, j = 0;
+        int sum = 0, maxSum = 0;
+
+        while (j < arr.length) {
+            if (j < k) {
+                sum += arr[j];
+                j++;
+            } else {
+                maxSum = Math.max(maxSum, sum);
+                sum -= arr[i++];
+                sum += arr[j++];
+            }
+        }
+
+        maxSum = Math.max(maxSum, sum);
+        return maxSum;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 100, 200, 300, 400 };
         int k = 2;
 
         // int k = 1;
 
-        System.out.println(maximumSumSubarray2(arr, k));
+        System.out.println(maximumSumSubarray3(arr, k));
 
     }
 }
