@@ -45,6 +45,24 @@ public class LongestSubarrayWithGivenSumK {
 
     }
 
+    public static int longestSumUsingTwoPointers(int[] arr, int k) {
+        int left = 0, right = 0;
+        int sum = arr[0];
+        int maxLen = 0;
+
+        while (right < arr.length) {
+
+            while (left <= right) {
+
+            }
+        }
+
+        while (right < arr.length && left < arr.length) {
+
+        }
+
+    }
+
     public static void main(String[] args) {
 
         int k = 5;
